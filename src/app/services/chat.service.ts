@@ -6,7 +6,7 @@ import type { Observable } from "rxjs"
   providedIn: "root",
 })
 export class ChatService {
-  private apiUrl = "http://localhost:8080/chat"
+  private apiUrl = "https://javachatbot.onrender.com/chat"
 
   constructor(private http: HttpClient) {}
 
