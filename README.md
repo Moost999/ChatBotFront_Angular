@@ -1,27 +1,40 @@
-# ChatBotApplicationFront
+# ChatBotFront_Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.13.
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
-## Development server
+Interface frontend desenvolvida em Angular para interagir com o JavaChatBot.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologias Utilizadas
 
-## Code scaffolding
+- Angular 17
+- TypeScript
+- Tailwind CSS
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 📌 Funcionalidades
 
-## Build
+- Interface intuitiva para comunicação com o chatbot.
+- Envio e exibição de mensagens em tempo real.
+- Design com TalwindCSS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ⚙️ Instalação e Execução
 
-## Running unit tests
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/Moost999/ChatBotFront_Angular.git
+   cd ChatBotFront_Angular
+   
+   Instale as dependências:
+    npm install
+    Execute a aplicação:
+    
+    ng serve
+    Acesse no navegador:
+    
+    http://localhost:4200
+🤝 Contribuição
+Contribuições são bem-vindas! Para sugerir melhorias ou corrigir bugs, abra uma issue ou envie um pull request.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+❤️ Feito com amor por Moostdev | João Gionda <3
+📜 Licença
+Este projeto está licenciado sob a MIT License. Consulte o arquivo LICENSE para mais detalhes.
