@@ -91,5 +91,35 @@ export class ChatComponent implements OnInit {
       this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight
     } catch (err) {}
   }
+
+  // Method to handle pre-prompt buttons
+  usePrompt(prompt: string): void {
+    this.messageText = prompt
+
+    // Focus the input field after setting the text
+    setTimeout(() => {
+      if (this.messageInput?.nativeElement) {
+        this.messageInput.nativeElement.focus()
+
+        // Place cursor at the end of the text
+        const length = this.messageText.length
+        this.messageInput.nativeElement.setSelectionRange(length, length)
+      }
+    }, 0)
+  }
+
+  // Method to clear chat history
+  clearChat(): void {
+    // Only clear if there are messages
+    if (this.messages().length > 0) {
+      // You could add a confirmation dialog here if desired
+      this.messages.set([])
+
+      // Focus the input field after clearing
+      setTimeout(() => {
+        this.messageInput?.nativeElement?.focus()
+      }, 0)
+    }
+  }
 }
 
