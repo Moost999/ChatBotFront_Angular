@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common"
 import { FormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http"
 import { trigger, style, animate, transition } from "@angular/animations"
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser"
 import type { Message } from "../../models/chat.model"
 import { ChatService } from "../../services/chat.service"
 
@@ -32,7 +33,10 @@ export class ChatComponent implements OnInit {
   // Regular property for two-way binding
   messageText = ""
 
-  constructor(private chatService: ChatService) {
+  constructor(
+    private chatService: ChatService,
+    private sanitizer: DomSanitizer,
+  ) {
     // Auto-scroll when messages change
     effect(() => {
       const messagesValue = this.messages()
@@ -120,6 +124,48 @@ export class ChatComponent implements OnInit {
         this.messageInput?.nativeElement?.focus()
       }, 0)
     }
+  }
+
+  // Format message content with Markdown-like syntax
+  formatMessage(content: string): SafeHtml {
+    if (!content) return ""
+
+    // Process headers
+    let formatted = content
+      // H1 headers (with equals signs underneath)
+      .replace(/^(.+)\n=+\s*$/gm, "<h1>$1</h1>")
+      // H2 headers (with dashes underneath)
+      .replace(/^(.+)\n-+\s*$/gm, "<h2>$1</h2>")
+      // Alternative H1 and H2 with # syntax
+      .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+      .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+      .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+
+      // Bold text
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+
+      // Lists (simple implementation)
+      .replace(/^\d+\.\s+(.+)$/gm, "<li>$1</li>")
+
+      // Horizontal rules
+      .replace(/^-{3,}$/gm, "<hr>")
+
+      // Paragraphs (ensure double line breaks create paragraphs)
+      .replace(/\n\n/g, "</p><p>")
+
+      // Preserve line breaks within paragraphs
+      .replace(/\n/g, "<br>")
+
+    // Wrap in paragraph tags if not already wrapped
+    if (!formatted.startsWith("<h1>") && !formatted.startsWith("<h2>") && !formatted.startsWith("<p>")) {
+      formatted = "<p>" + formatted + "</p>"
+    }
+
+    // Process lists (wrap consecutive <li> elements in <ol> or <ul>)
+    formatted = formatted.replace(/(<li>.*?<\/li>)+/g, (match) => "<ol>" + match + "</ol>")
+
+    // Return sanitized HTML
+    return this.sanitizer.bypassSecurityTrustHtml(formatted)
   }
 }
 
