@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core"
+import { CommonModule } from "@angular/common"
+import { RouterOutlet } from "@angular/router"
+import { ChatComponent } from "./components/chat/chat.component"
+import { HttpClientModule } from "@angular/common/http"
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [CommonModule, ChatComponent, HttpClientModule],
+  template: `<app-chat></app-chat>`,
 })
 export class AppComponent {
-  title = 'ChatBotApplicationFront';
+  title = "angular-chatbot"
 }
+
