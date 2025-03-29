@@ -35,32 +35,32 @@
     </div>
     
     <!-- Chat Content -->
-    <div class="flex flex-1 flex-col overflow-y-auto bg-[#e9eaef]" #messagesContainer>
+    <div class="flex flex-1 flex-col overflow-y-auto bg-[#1e293b]" #messagesContainer>
       <!-- Empty State -->
-      <div *ngIf="messages().length === 0" class="flex h-full flex-col items-center justify-center text-center text-gray-600 bg-[#e9eaef]">
+      <div *ngIf="messages().length === 0" class="flex h-full flex-col items-center justify-center text-center text-gray-300 bg-[#1e293b]">
         <div class="relative mb-4">
-          <div class="flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+          <div class="flex h-20 w-20 items-center justify-center rounded-full bg-blue-900/30">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400">
               <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
               <polyline points="17 2 12 7 7 2"></polyline>
             </svg>
           </div>
         </div>
-        <h3 class="mt-4 mb-2 text-2xl font-medium text-gray-800">
+        <h3 class="mt-4 mb-2 text-2xl font-medium text-gray-100">
           How can I help you today?
         </h3>
-        <p class="max-w-md text-sm mb-8 text-gray-600">
+        <p class="max-w-md text-sm mb-8 text-gray-300">
           Ask me anything about quantum computing, programming, or any other topic you're curious about.
         </p>
         
         <div class="flex flex-wrap justify-center gap-2">
-          <button (click)="usePrompt('Explain quantum computing')" class="rounded-full bg-blue-100 px-4 py-2 text-sm text-blue-700 hover:bg-blue-200 transition-all hover:shadow-md">
+          <button (click)="usePrompt('Explain quantum computing')" class="rounded-full bg-blue-900/30 px-4 py-2 text-sm text-blue-300 hover:bg-blue-800/40 transition-all hover:shadow-md">
             Explain quantum computing
           </button>
-          <button (click)="usePrompt('Share Angular performance tips')" class="rounded-full bg-blue-100 px-4 py-2 text-sm text-blue-700 hover:bg-blue-200 transition-all hover:shadow-md">
+          <button (click)="usePrompt('Share Angular performance tips')" class="rounded-full bg-blue-900/30 px-4 py-2 text-sm text-blue-300 hover:bg-blue-800/40 transition-all hover:shadow-md">
             Angular performance tips
           </button>
-          <button (click)="usePrompt('Suggest Machine Learning projects')" class="rounded-full bg-blue-100 px-4 py-2 text-sm text-blue-700 hover:bg-blue-200 transition-all hover:shadow-md">
+          <button (click)="usePrompt('Suggest Machine Learning projects')" class="rounded-full bg-blue-900/30 px-4 py-2 text-sm text-blue-300 hover:bg-blue-800/40 transition-all hover:shadow-md">
             Machine Learning projects
           </button>
         </div>
@@ -68,19 +68,19 @@
       
       <!-- Messages -->
       <div *ngFor="let message of messages()" @messageAnimation 
-           class="p-4 bg-[#e9eaef]">
+           class="p-4 bg-[#1e293b]">
         <div class="mx-auto max-w-3xl">
-          <div class="text-sm font-medium text-gray-500 mb-1" *ngIf="message.role === 'assistant'">AI Assistant</div>
-          <div class="text-sm font-medium text-gray-500 mb-1" *ngIf="message.role === 'user'">You</div>
-          <div class="whitespace-pre-wrap text-gray-800 leading-relaxed">{{ message.content }}</div>
+          <div class="text-sm font-medium text-gray-400 mb-1" *ngIf="message.role === 'assistant'">AI Assistant</div>
+          <div class="text-sm font-medium text-gray-400 mb-1" *ngIf="message.role === 'user'">You</div>
+          <div class="whitespace-pre-wrap text-gray-200 leading-relaxed">{{ message.content }}</div>
         </div>
       </div>
       
       <!-- Loading Message -->
-      <div *ngIf="isLoading()" @messageAnimation class="p-4 bg-[#e9eaef]">
+      <div *ngIf="isLoading()" @messageAnimation class="p-4 bg-[#1e293b]">
         <div class="mx-auto max-w-3xl">
-          <div class="text-sm font-medium text-gray-500 mb-1">AI Assistant</div>
-          <div class="flex items-center gap-2 text-gray-800">
+          <div class="text-sm font-medium text-gray-400 mb-1">AI Assistant</div>
+          <div class="flex items-center gap-2 text-gray-200">
             <span class="flex space-x-1">
               <span class="h-2 w-2 rounded-full bg-blue-500 animate-bounce [animation-delay:-0.3s]"></span>
               <span class="h-2 w-2 rounded-full bg-blue-500 animate-bounce [animation-delay:-0.15s]"></span>
